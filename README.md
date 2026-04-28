@@ -43,14 +43,14 @@ The table below shows each MongoDB-maintained ODM and its triage summary — how
 
 | ODM | Language / Ecosystem | Triage Summary |
 |-----|----------------------|----------------|
-| [Mongoose](odms/mongoose.md) | Node.js / JavaScript | 3/16 |
-| [Django](odms/django.md) | Python | 0/16 |
-| [Spring Data MongoDB](odms/spring.md) | Java | 0/16 |
-| [Hibernate](odms/hibernate.md) | Java | 0/16 |
-| [EF Core](odms/efcore.md) | C# / .NET | 5/16 |
-| [Doctrine ODM](odms/doctrine.md) | PHP | 0/16 |
-| [Laravel MongoDB](odms/laravel.md) | PHP / Laravel | 0/16 |
-| [Mongoid](odms/mongoid.md) | Ruby | 0/16 |
+| [Mongoose](odms/mongoose.md) | Node.js / JavaScript | 14/16 |
+| [Django](odms/django.md) | Python | 14/16 |
+| [Spring Data MongoDB](odms/spring.md) | Java | 14/16 |
+| [Hibernate](odms/hibernate.md) | Java | 9/16 |
+| [EF Core](odms/efcore.md) | C# / .NET | 13/16 |
+| [Doctrine ODM](odms/doctrine.md) | PHP | 14/16 |
+| [Laravel MongoDB](odms/laravel.md) | PHP / Laravel | 15/16 |
+| [Mongoid](odms/mongoid.md) | Ruby | 14/16 |
 
 ### Status Definitions
 

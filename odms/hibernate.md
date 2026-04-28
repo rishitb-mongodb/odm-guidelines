@@ -1,27 +1,27 @@
-# Hibernate
+# Hibernate ORM (MongoDB Extension)
 
 **Language / Ecosystem:** Java / Hibernate ORM
-**Repository:** [hibernate/hibernate-orm](https://github.com/hibernate/hibernate-orm)
+**Repository:** [mongodb/mongo-hibernate](https://github.com/mongodb/mongo-hibernate)
 
-Hibernate provides a MongoDB dialect that allows developers using Hibernate ORM to use MongoDB as a backend. It maps Java entity classes to MongoDB collections and integrates with the standard Java Persistence API (JPA) programming model.
+The MongoDB Extension for Hibernate ORM is a MongoDB-maintained Hibernate ORM dialect that allows Java developers to use standard JPA annotations and Hibernate ORM APIs with MongoDB as the backing store. It is currently in **Public Preview** (since November 2025, v1.0.0-alpha) and is not yet recommended for production use. Breaking changes may be introduced before GA. Requires Java 17+, Hibernate ORM 6.6+, MongoDB 7.0+, and a replica set (standalone deployments are not supported due to transaction requirements).
 
 ## Guidelines Triage
 
 | Feature | Triage Status |
 |---------|---------------|
-| [Query Builder](../guidelines/query-builder/query-builder.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Bulk Operations](../guidelines/bulk-operations/bulk-operations.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Relationship Mapping](../guidelines/relationship-mapping/relationship-mapping.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Index Management](../guidelines/index-management/index-management.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Transactions](../guidelines/transactions/transactions.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [BSON Data Type Support](../guidelines/bson-data-types/bson-data-types.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Array Fields](../guidelines/array-fields/array-fields.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Embedded Fields](../guidelines/embedded-fields/embedded-fields.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Polymorphic Array/Embedded Fields](../guidelines/polymorphic-fields/polymorphic-fields.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Security Features (CSFLE & QE)](../guidelines/security-features/security-features.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Joins ($lookup)](../guidelines/joins/joins.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Atlas Search](../guidelines/atlas-search/atlas-search.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Vector Search](../guidelines/vector-search/vector-search.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Logging](../guidelines/logging/logging.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
-| [Escape Hatch](../guidelines/escape-hatch/escape-hatch.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
+| [Query Builder](../guidelines/query-builder/query-builder.md) | ![Done](https://img.shields.io/badge/Done-brightgreen?style=flat) — HQL/JPQL and Criteria API translate to MongoDB aggregation pipelines; native MQL via `createNativeQuery()`; raw `MongoClient` escape hatch; no parameter binding in native MQL queries; `$project` stage mandatory with explicit field listing |
+| [Bulk Operations](../guidelines/bulk-operations/bulk-operations.md) | ![In Progress](https://img.shields.io/badge/In_Progress-yellow?style=flat) — Bulk insert/update/delete via Hibernate session; upsert explicitly not supported in public preview (planned for GA); no detailed per-operation result reporting |
+| [Relationship Mapping](../guidelines/relationship-mapping/relationship-mapping.md) | ![In Progress](https://img.shields.io/badge/In_Progress-yellow?style=flat) — `@Embeddable`/`@Struct` for embedded documents supported; `@OneToMany` and `@ManyToOne` associations not supported (planned for GA); eager loading documented; lazy loading not tested |
+| [Index Management](../guidelines/index-management/index-management.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) — No index support in public preview; all index types unsupported; workaround is raw `MongoClient`; planned for GA (compound, geospatial, partial, TTL, text indexes) |
+| [Transactions](../guidelines/transactions/transactions.md) | ![Done](https://img.shields.io/badge/Done-brightgreen?style=flat) — `@Transactional` integration; `session.beginTransaction()`/`tx.commit()`/`tx.rollback()`; JPA `EntityTransaction`; multi-document ACID compliance; requires replica set; `$search` queries cannot run inside transactions |
+| [BSON Data Type Support](../guidelines/bson-data-types/bson-data-types.md) | ![In Progress](https://img.shields.io/badge/In_Progress-yellow?style=flat) — ObjectId (`@ObjectIdGenerator`), `java.time.Instant`, UUID, Int32/Int64/Double, String, boolean, byte[], null supported; Decimal128 not explicitly documented; LocalDate/LocalDateTime support not confirmed for MongoDB dialect |
+| [Array Fields](../guidelines/array-fields/array-fields.md) | ![Done](https://img.shields.io/badge/Done-brightgreen?style=flat) — `@ElementCollection` for arrays/collections; `List`/`Set`/`Map` via `@Embeddable`/`@Struct`; array query operators via HQL/JPQL; advanced update operators and `arrayFilters` require native queries |
+| [Embedded Fields](../guidelines/embedded-fields/embedded-fields.md) | ![Done](https://img.shields.io/badge/Done-brightgreen?style=flat) — `@Embeddable`/`@Embedded` and `@Struct` for nested documents; nested field querying via HQL/JPQL; schema reuse via embeddable classes; partial update behaviour not explicitly documented; aggregation expressions in projections unsupported |
+| [Polymorphic Array/Embedded Fields](../guidelines/polymorphic-fields/polymorphic-fields.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) — Inheritance strategies (`@Inheritance`, `@DiscriminatorColumn`) not supported in public preview; planned for GA |
+| [Security Features (CSFLE & QE)](../guidelines/security-features/security-features.md) | ![Won't Do](https://img.shields.io/badge/Won't_Do-red?style=flat) — CSFLE and Queryable Encryption not supported; must be configured at MongoDB Java driver level |
+| [Joins ($lookup)](../guidelines/joins/joins.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) — `@OneToMany`/`@ManyToOne` associations not supported; `$lookup` accessible only via `createNativeQuery()` with aggregation pipeline; planned for GA |
+| [Atlas Search](../guidelines/atlas-search/atlas-search.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) — No native support; accessible via `createNativeQuery()` with `$search` stage; `$search` cannot run inside transactions; native support planned for GA |
+| [Vector Search](../guidelines/vector-search/vector-search.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) — No native support; accessible via `createNativeQuery()` with `$vectorSearch` stage; native support planned for GA |
+| [Logging](../guidelines/logging/logging.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) — No Hibernate extension-specific logging documented; inherits MongoDB Java driver SLF4J integration; slow query detection not documented |
+| [Escape Hatch](../guidelines/escape-hatch/escape-hatch.md) | ![Done](https://img.shields.io/badge/Done-brightgreen?style=flat) — Raw `MongoClient` access for driver-level operations; `createNativeQuery()` for MQL and aggregation pipelines; Hibernate `Session` / JPA `EntityManager` for session passthrough |
 | [Performance Benchmarks](../guidelines/performance-benchmarks/performance-benchmarks.md) | ![Backlog](https://img.shields.io/badge/Backlog-lightgrey?style=flat) |
