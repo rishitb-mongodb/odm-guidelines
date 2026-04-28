@@ -20,22 +20,22 @@ The following guidelines define the features that each ODM should implement. Eac
 
 | # | Guideline |
 |---|-----------|
-| 1 | [Query Builder](guidelines/query-builder.md) |
-| 2 | [Bulk Operations](guidelines/bulk-operations.md) |
-| 3 | [Relationship Mapping](guidelines/relationship-mapping.md) |
-| 4 | [Index Management](guidelines/index-management.md) |
-| 5 | [Transactions](guidelines/transactions.md) |
-| 6 | [BSON Data Type Support](guidelines/bson-data-types.md) |
-| 7 | [Array Fields](guidelines/array-fields.md) |
-| 8 | [Embedded Fields](guidelines/embedded-fields.md) |
-| 9 | [Polymorphic Array/Embedded Fields](guidelines/polymorphic-fields.md) |
-| 10 | [Security Features (CSFLE & QE)](guidelines/security-features.md) |
-| 11 | [Joins ($lookup)](guidelines/joins.md) |
-| 12 | [Atlas Search](guidelines/atlas-search.md) |
-| 13 | [Vector Search](guidelines/vector-search.md) |
-| 14 | [Logging](guidelines/logging.md) |
-| 15 | [Escape Hatch](guidelines/escape-hatch.md) |
-| 16 | [Performance Benchmarks](guidelines/performance-benchmarks.md) |
+| 1 | [Query Builder](guidelines/query-builder/query-builder.md) |
+| 2 | [Bulk Operations](guidelines/bulk-operations/bulk-operations.md) |
+| 3 | [Relationship Mapping](guidelines/relationship-mapping/relationship-mapping.md) |
+| 4 | [Index Management](guidelines/index-management/index-management.md) |
+| 5 | [Transactions](guidelines/transactions/transactions.md) |
+| 6 | [BSON Data Type Support](guidelines/bson-data-types/bson-data-types.md) |
+| 7 | [Array Fields](guidelines/array-fields/array-fields.md) |
+| 8 | [Embedded Fields](guidelines/embedded-fields/embedded-fields.md) |
+| 9 | [Polymorphic Array/Embedded Fields](guidelines/polymorphic-fields/polymorphic-fields.md) |
+| 10 | [Security Features (CSFLE & QE)](guidelines/security-features/security-features.md) |
+| 11 | [Joins ($lookup)](guidelines/joins/joins.md) |
+| 12 | [Atlas Search](guidelines/atlas-search/atlas-search.md) |
+| 13 | [Vector Search](guidelines/vector-search/vector-search.md) |
+| 14 | [Logging](guidelines/logging/logging.md) |
+| 15 | [Escape Hatch](guidelines/escape-hatch/escape-hatch.md) |
+| 16 | [Performance Benchmarks](guidelines/performance-benchmarks/performance-benchmarks.md) |
 
 ## ODM Compliance
 

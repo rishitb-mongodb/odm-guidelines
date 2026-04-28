@@ -42,7 +42,7 @@ def main() -> int:
         print(f"ERROR: README.md not found at {README_PATH}", file=sys.stderr)
         return 1
 
-    total_guidelines = len(list(GUIDELINES_DIR.glob("*.md")))
+    total_guidelines = len([d for d in GUIDELINES_DIR.iterdir() if d.is_dir()])
     readme = README_PATH.read_text(encoding="utf-8")
     changed = False
 
