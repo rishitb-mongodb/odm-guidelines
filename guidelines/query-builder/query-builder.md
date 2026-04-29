@@ -25,4 +25,4 @@ The Query Builder is the core abstraction for users interacting with MongoDB thr
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | Standard Django QuerySet API; `raw_aggregate()` for aggregation pipeline (requires `MongoManager`); `raw()`, `extra()`, `prefetch_related()`, `select_for_update()` not supported |

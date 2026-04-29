@@ -29,4 +29,4 @@ Bulk Operations allow users to execute multiple write operations in a single rou
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Backlog | `bulk_create()` works; ordered/unordered `BulkWrite` requires the PyMongo escape hatch via `connections["default"].database.client` |

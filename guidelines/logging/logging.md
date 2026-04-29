@@ -29,4 +29,4 @@ Logging allows developers and operators to observe the behavior of the ODM and t
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | Standard Django `logging` framework applies; PyMongo `monitoring.CommandListener` available via `connections["default"].database.client` escape hatch; no built-in slow query detection; Django Debug Toolbar partially supported |

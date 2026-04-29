@@ -19,3 +19,16 @@ Atlas Vector Search enables semantic similarity search over high-dimensional vec
 6. **Score Exposure:** The vector similarity score (`vectorSearchScore`) must be accessible on query results to allow application-level relevance filtering or display.
 
 7. **Embedding Integration Guidance:** The ODM documentation must describe how to generate and store vector embeddings (e.g., from a third-party model provider) and pass the resulting vector to the query API.
+
+## ODM Support
+
+| ODM | Language | Status | Notes |
+|-----|----------|--------|-------|
+| Mongoose | JavaScript / TypeScript | In Progress | TypeScript types merged (PR #14428); no dedicated `$vectorSearch` aggregate method; must use raw stage |
+| EF Core | C# / .NET | Done | Full LINQ `VectorSearch()` integration (v8.3.3/v9.0.3+); `DotProduct`, `Cosine`, `Euclidean` metrics; `.Prefilter()` and `__score` metadata |
+| Spring Data MongoDB | Java | Done | `@VectorSearch` annotation and `VectorSearchOperation` (v4.5.0+); relevance scores returned |
+| Hibernate OGM | Java | Backlog | No native support; accessible via `createNativeQuery()` with `$vectorSearch` stage |
+| Doctrine MongoDB ODM | PHP | Done | `#[VectorSearchIndex]` attribute (v2.13+); `vector_float32`, `vector_int8`, `vector_packed_bit` field types; `vectorSearch()` aggregation stage |
+| Laravel MongoDB | PHP | Done | Native `vectorSearch()` query builder method (v5.2+); `createSearchIndex()` for vector indexes |
+| Mongoid | Ruby | In Progress | No dedicated DSL; accessible via raw `Model.collection.aggregate([{$vectorSearch: {...}}])` |
+| Django MongoDB Backend | Python | Done | `SearchVector` expression via `annotate()`; ANN (default) and ENN (`exact=True`) supported; `VectorSearchIndex` for index management |

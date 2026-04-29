@@ -25,4 +25,4 @@ Arrays are a fundamental part of MongoDB's document model. The ODM must expose t
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | `ArrayField` (scalar) and `EmbeddedModelArrayField` (embedded models); lookups: `contains`, `contained_by`, `overlap`, `len`; index and slice querying on embedded model arrays; relational fields cannot be used as `ArrayField` base type |

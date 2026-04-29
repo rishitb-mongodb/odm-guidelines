@@ -23,4 +23,4 @@ Index Management covers how an ODM exposes the creation and deletion of MongoDB 
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | Single-field, compound, multikey, partial, unique, geospatial, and embedded indexes via `Meta.indexes`; `EmbeddedFieldIndex` for subfield indexes (v6.0.2+); `SearchIndex`/`VectorSearchIndex` for Atlas indexes; embedded/array field index updates not tracked by migrations |

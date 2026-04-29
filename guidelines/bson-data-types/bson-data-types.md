@@ -29,4 +29,4 @@ MongoDB stores data using BSON, a superset of JSON that includes types not found
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | `ObjectIdField` replaces unsupported `AutoField`/`BigAutoField`/`SmallAutoField`; `DateTimeField` has no microsecond granularity; `DurationField` stores milliseconds; `JSONField` cannot distinguish JSON null from SQL null; `CompositePrimaryKey` and `GeneratedField` not supported |

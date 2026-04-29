@@ -27,4 +27,4 @@ Relationship Mapping covers how an ODM represents and resolves associations betw
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | `EmbeddedModelField`/`EmbeddedModelArrayField` recommended (no `$lookup`); `ForeignKey`/`OneToOneField`/`ManyToManyField` use slow `$lookup`; relational fields cannot be used inside `EmbeddedModel` classes |

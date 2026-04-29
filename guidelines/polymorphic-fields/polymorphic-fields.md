@@ -17,3 +17,16 @@ Polymorphic fields allow a single field or array to contain documents of differe
 5. **Schema Inheritance:** Where the host language supports class inheritance, the ODM's discriminator pattern should integrate naturally with the inheritance model so that shared fields are defined on a base type and concrete types extend it.
 
 6. **Array Polymorphism:** The ODM must support arrays where individual elements can be of different registered types, not just fields that hold a single polymorphic sub-document.
+
+## ODM Support
+
+| ODM | Language | Status | Notes |
+|-----|----------|--------|-------|
+| Mongoose | JavaScript / TypeScript | Done | `Schema.discriminator()` with configurable key (default `__t`); embedded discriminators in arrays supported |
+| EF Core | C# / .NET | Done | TPH via `_t` discriminator (default from v10.0); `HasDiscriminator()` fluent API; discriminators on embedded (non-root) documents not supported |
+| Spring Data MongoDB | Java | Done | `_class` discriminator field added automatically; `@TypeAlias` for stable schema evolution |
+| Hibernate OGM | Java | Backlog | Inheritance strategies (`@Inheritance`, `@DiscriminatorColumn`) not supported in public preview; planned for GA |
+| Doctrine MongoDB ODM | PHP | Done | Three strategies: mapped superclass, single collection (discriminator), collection per class; customisable discriminator field |
+| Laravel MongoDB | PHP | Done | `morphTo`/`morphMany` (PR #2608); `*_type`/`*_id` discriminator pattern; documentation still being developed |
+| Mongoid | Ruby | Done | `polymorphic: true` with `_type` discriminator; custom discriminator via `identify_as` (v9.0.2+); global type registry (v9.0.2+) |
+| Django MongoDB Backend | Python | Done | Polymorphic embedded models supported; shared fields and type-specific fields can both be queried; conflicting same-name fields across types use first match |

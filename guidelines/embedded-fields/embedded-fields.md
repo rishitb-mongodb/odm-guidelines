@@ -29,4 +29,4 @@ Embedded (nested) documents are a core feature of MongoDB's document model and a
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | `EmbeddedModelField` with `EmbeddedModel` base class; double-underscore dot notation for nested queries; `EmbeddedFieldIndex` for subfield indexes (v6.0.2+); relational fields cannot be used inside `EmbeddedModel` |

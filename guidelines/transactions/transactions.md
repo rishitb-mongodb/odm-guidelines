@@ -27,4 +27,4 @@ Transactions allow multiple operations across one or more collections to be exec
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | Custom `django_mongodb_backend.transaction` module — Django's native `django.db.transaction` not supported; `@transaction.atomic` and `with transaction.atomic()`; no savepoints, no DDL transactions; requires replica set |

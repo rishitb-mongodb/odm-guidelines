@@ -17,3 +17,16 @@ Performance Benchmarks provide a common methodology for measuring and comparing 
 5. **Environment Documentation:** Benchmarks must document the environment in which they were run, including: MongoDB server version and topology (standalone, replica set), hardware specifications, and ODM and driver versions.
 
 6. **Reproducibility:** Benchmark suite must be runnable by any contributor from source with minimal setup. The methodology must be documented so that results from different ODMs or different versions of the same ODM can be meaningfully compared.
+
+## ODM Support
+
+| ODM | Language | Status | Notes |
+|-----|----------|--------|-------|
+| Mongoose | JavaScript / TypeScript | Backlog | — |
+| EF Core | C# / .NET | Backlog | — |
+| Spring Data MongoDB | Java | Backlog | — |
+| Hibernate OGM | Java | Backlog | — |
+| Doctrine MongoDB ODM | PHP | Backlog | — |
+| Laravel MongoDB | PHP | Backlog | — |
+| Mongoid | Ruby | Backlog | — |
+| Django MongoDB Backend | Python | Backlog | — |

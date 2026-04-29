@@ -29,4 +29,4 @@ MongoDB provides client-side encryption capabilities — Client-Side Field Level
 | Doctrine MongoDB ODM | PHP | Backlog | — |
 | Laravel MongoDB | PHP | Backlog | — |
 | Mongoid | Ruby | Backlog | — |
-| Django / MongoEngine | Python | Backlog | — |
+| Django MongoDB Backend | Python | Done | Queryable Encryption (QE) supported as a first-class feature; Client-Side Field Level Encryption (CSFLE) not supported |
