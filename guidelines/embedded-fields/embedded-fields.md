@@ -22,11 +22,11 @@ Embedded (nested) documents are a core feature of MongoDB's document model and a
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | Backlog | — |
-| EF Core | C# / .NET | Backlog | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | Done | Nested schema declaration; dot notation querying; `$set` partial updates; nested validation via `runValidators: true`; care needed with `minimize` option on dot notation updates |
+| EF Core | C# / .NET | Done | `OwnsOne()`/`OwnsMany()`; LINQ dot notation; partial updates not supported — whole-document updates only; discriminators on embedded (non-root) documents not supported |
+| Spring Data MongoDB | Java | Done | Automatic nested object mapping; dot notation in queries and updates; nested field path strings require manual construction (no compile-time type safety) |
+| Hibernate OGM | Java | Done | `@Embeddable`/`@Embedded` and `@Struct` for nested documents; nested field querying via HQL/JPQL; partial update behaviour not explicitly documented |
+| Doctrine MongoDB ODM | PHP | Done | `@EmbedOne`/`@EmbedMany`; dot notation in QueryBuilder; `$set` partial updates; `#[Validation]` for JSON Schema validation (v2.3+); schema reuse supported |
+| Laravel MongoDB | PHP | Done | `embedsOne`/`embedsMany`; dot notation querying; `$set` partial updates; no built-in nested field validation |
+| Mongoid | Ruby | Done | `embeds_one`/`embeds_many`; dot notation; `$set` partial updates; `accepts_nested_attributes_for`; embedded documents cannot be queried or updated independently of parent |
 | Django MongoDB Backend | Python | Done | `EmbeddedModelField` with `EmbeddedModel` base class; double-underscore dot notation for nested queries; `EmbeddedFieldIndex` for subfield indexes (v6.0.2+); relational fields cannot be used inside `EmbeddedModel` |

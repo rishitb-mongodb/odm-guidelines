@@ -22,11 +22,11 @@ Bulk Operations allow users to execute multiple write operations in a single rou
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | In Progress | — |
-| EF Core | C# / .NET | Backlog | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | Done | `Model.bulkWrite()` and `Model.insertMany()`; ordered/unordered modes inherit MongoDB driver defaults |
+| EF Core | C# / .NET | Backlog | `AddRange()`/`RemoveRange()` via `SaveChanges()` only; set-based `ExecuteUpdate`/`ExecuteDelete` not yet supported |
+| Spring Data MongoDB | Java | Done | `BulkOperations` API with `ORDERED`/`UNORDERED` modes; reactive `ReactiveBulkOperations`; optimistic locking not supported in bulk |
+| Hibernate OGM | Java | In Progress | Bulk insert/update/delete via Hibernate session; upsert not supported in public preview; no per-operation result reporting |
+| Doctrine MongoDB ODM | PHP | Backlog | Unit-of-work `flush()` batches writes; no explicit `bulkWrite` API exposed; GitHub issue #1083 open |
+| Laravel MongoDB | PHP | In Progress | `insert()` for batch inserts; `upsert()` (v4.7+); native ordered/unordered `BulkWrite` API not exposed; attribute casting skipped on bulk insert |
+| Mongoid | Ruby | Backlog | Ruby driver supports `bulk_write`; not exposed at Mongoid model level; MONGOID-4619 tracks this |
 | Django MongoDB Backend | Python | Backlog | `bulk_create()` works; ordered/unordered `BulkWrite` requires the PyMongo escape hatch via `connections["default"].database.client` |

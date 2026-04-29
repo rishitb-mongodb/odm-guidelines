@@ -20,11 +20,11 @@ Transactions allow multiple operations across one or more collections to be exec
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | Backlog | — |
-| EF Core | C# / .NET | Backlog | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | Done | `startSession()`, `withTransaction()` callback API; manual `startTransaction()`/`commitTransaction()`/`abortTransaction()`; no nested transactions; no `Promise.all()` inside transactions |
+| EF Core | C# / .NET | Done | `SaveChanges()` transactional by default (v8.1+); explicit transactions via `MongoTransactionManager` (v9.0.3+); requires replica set |
+| Spring Data MongoDB | Java | Done | `@Transactional` via `MongoTransactionManager`; `TransactionTemplate` for manual control; requires MongoDB 4.0+ replica set |
+| Hibernate OGM | Java | Done | `@Transactional` integration; `EntityTransaction`; multi-document ACID; requires replica set; `$search` queries cannot run inside transactions |
+| Doctrine MongoDB ODM | PHP | Done | Session and transaction support (v2.7+); `useTransactionalFlush` config; lifecycle events do not dispatch during transaction retries |
+| Laravel MongoDB | PHP | Done | `DB::transaction()` callback; manual session API; requires replica set; no nested transactions |
+| Mongoid | Ruby | Done | `Model.transaction {}` (v9.0+); `with_session` (v6.4+); `after_commit`/`after_rollback` callbacks; requires replica set |
 | Django MongoDB Backend | Python | Done | Custom `django_mongodb_backend.transaction` module — Django's native `django.db.transaction` not supported; `@transaction.atomic` and `with transaction.atomic()`; no savepoints, no DDL transactions; requires replica set |

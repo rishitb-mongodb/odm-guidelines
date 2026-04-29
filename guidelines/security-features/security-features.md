@@ -22,11 +22,11 @@ MongoDB provides client-side encryption capabilities — Client-Side Field Level
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | Backlog | — |
-| EF Core | C# / .NET | Done | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | Backlog | No schema-level CSFLE or QE integration; 12+ open GitHub issues; must configure via driver's `autoEncryption` |
+| EF Core | C# / .NET | Done | QE equality and range (v9.0.1+); substring not yet available; requires `MongoDB.Driver.Encryption` and `crypt_shared`; MongoDB M10+ only |
+| Spring Data MongoDB | Java | Done | CSFLE (v4.2+); QE (v5.0+); CSFLE and QE cannot be used in the same collection |
+| Hibernate OGM | Java | Won't Do | CSFLE and QE not supported; must be configured at MongoDB Java driver level |
+| Doctrine MongoDB ODM | PHP | Done | CSFLE (v2.12+); QE (v2.13+); `#[Encrypt]` attribute in `doctrine/mongodb-odm-bundle` v5.5+; requires MongoDB 7.0+ for QE |
+| Laravel MongoDB | PHP | Won't Do | No Laravel-level CSFLE or QE integration; must be configured at PHP driver level |
+| Mongoid | Ruby | Done | CSFLE automatic encryption (v9.0+); requires Automatic Encryption Shared Library or `mongocryptd`; QE documented; setup complexity is high |
 | Django MongoDB Backend | Python | Done | Queryable Encryption (QE) supported as a first-class feature; Client-Side Field Level Encryption (CSFLE) not supported |

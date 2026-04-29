@@ -16,11 +16,11 @@ Index Management covers how an ODM exposes the creation and deletion of MongoDB 
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | Backlog | — |
-| EF Core | C# / .NET | Backlog | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | Done | Declarative schema-level indexes; `syncIndexes()`, `ensureIndexes()`, `diffIndexes()` (dry-run); Atlas Search indexes via `createSearchIndex()` |
+| EF Core | C# / .NET | Done | `HasIndex()` in `OnModelCreating()`; `HasCreateIndexOptions()` for MongoDB-specific options; indexes created only on `Database.EnsureCreated()`; geospatial indexes not supported |
+| Spring Data MongoDB | Java | Done | `@Indexed`, `@CompoundIndex`, `@UniqueIndex` annotations; `IndexOperations` programmatic API; automatic index creation disabled by default since v3.0 |
+| Hibernate OGM | Java | Backlog | No index support in public preview; workaround via raw `MongoClient`; all index types planned for GA |
+| Doctrine MongoDB ODM | PHP | Done | `#[Index]`/`#[UniqueIndex]` PHP attributes; single-field, compound, text, TTL, geospatial, sparse, partial indexes; `SchemaManager` console commands |
+| Laravel MongoDB | PHP | Done | Schema Builder with `index()`, `unique()`, `sparse()`, `ttl()`; compound and text indexes; geospatial indexes not explicitly documented |
+| Mongoid | Ruby | Done | `index` macro; single-field, compound, unique, sparse, text, TTL, geospatial (2dsphere); `rake db:mongoid:create_indexes`; `search_index` macro for Atlas Search |
 | Django MongoDB Backend | Python | Done | Single-field, compound, multikey, partial, unique, geospatial, and embedded indexes via `Meta.indexes`; `EmbeddedFieldIndex` for subfield indexes (v6.0.2+); `SearchIndex`/`VectorSearchIndex` for Atlas indexes; embedded/array field index updates not tracked by migrations |

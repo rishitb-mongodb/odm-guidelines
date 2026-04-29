@@ -22,11 +22,11 @@ MongoDB stores data using BSON, a superset of JSON that includes types not found
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | Backlog | — |
-| EF Core | C# / .NET | Backlog | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | Done | ObjectId, Decimal128, UUID (subtype 4 default since v9.0), BigInt for Int64; no timezone handling at schema level |
+| EF Core | C# / .NET | Done | ObjectId, Decimal128, all CLR numeric types; DateTime defaults to UTC; GUID defaults to Standard (UUID subtype 4); `Mql.IsNullOrMissing()` for null vs. missing distinction |
+| Spring Data MongoDB | Java | Done | ObjectId, Decimal128 via `BigDecimal`, UUID (must configure representation explicitly); `BigDecimal`/`BigInteger` representation defaults changed in v5.0 |
+| Hibernate OGM | Java | In Progress | ObjectId, `java.time.Instant`, UUID, Int32/Int64/Double, String, boolean, byte[] supported; Decimal128 not documented; LocalDate/LocalDateTime support not confirmed |
+| Doctrine MongoDB ODM | PHP | Done | ObjectId, Date/DateTime (`MongoDB\BSON\UTCDateTime`), Decimal128 (requires `ext-bcmath`), UUID binary; timezone must be stored separately |
+| Laravel MongoDB | PHP | Done | ObjectId, Carbon/DateTime (auto-converts v5.0+), Decimal128, UUID; nested array dates not automatically cast to Carbon |
+| Mongoid | Ruby | Done | `BSON::ObjectId`; Date/Time with timezone awareness; Decimal128 via `BigDecimal`; UUID via `BSON::Binary`; no distinct `BSON::Int32`/`BSON::Int64` at model level |
 | Django MongoDB Backend | Python | Done | `ObjectIdField` replaces unsupported `AutoField`/`BigAutoField`/`SmallAutoField`; `DateTimeField` has no microsecond granularity; `DurationField` stores milliseconds; `JSONField` cannot distinguish JSON null from SQL null; `CompositePrimaryKey` and `GeneratedField` not supported |

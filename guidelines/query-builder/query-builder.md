@@ -18,11 +18,11 @@ The Query Builder is the core abstraction for users interacting with MongoDB thr
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | Done | — |
-| EF Core | C# / .NET | Done | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | Done | Method chaining; Aggregation Pipeline via `Model.aggregate()`; aggregation results are POJOs |
+| EF Core | C# / .NET | Done | Full LINQ translation; `Mql.Exists()`, `Mql.IsMissing()`, `Mql.IsNullOrMissing()` helpers |
+| Spring Data MongoDB | Java | Done | Fluent `Criteria` API, `MongoTemplate`, repository query derivation, `@Query` annotation for native JSON |
+| Hibernate OGM | Java | Done | HQL/JPQL and Criteria API; native MQL via `createNativeQuery()`; `$project` stage mandatory with explicit field listing |
+| Doctrine MongoDB ODM | PHP | Done | Fluent `QueryBuilder`; `Criteria` API; `AggregationBuilder`; PHP type auto-configuration (v2.4+) |
+| Laravel MongoDB | PHP | Done | Full Eloquent query builder; Aggregation Pipeline builder (v4.3+); raw driver access via `DB::getMongoClient()` |
+| Mongoid | Ruby | Done | Chainable Criteria DSL; Aggregation Pipeline via `Model.collection.aggregate([])`; limited DSL for aggregation beyond `$group`/`$project`/`$unwind` |
 | Django MongoDB Backend | Python | Done | Standard Django QuerySet API; `raw_aggregate()` for aggregation pipeline (requires `MongoManager`); `raw()`, `extra()`, `prefetch_related()`, `select_for_update()` not supported |

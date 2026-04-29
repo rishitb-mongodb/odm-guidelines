@@ -22,11 +22,11 @@ Logging allows developers and operators to observe the behavior of the ODM and t
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | Backlog | — |
-| EF Core | C# / .NET | Done | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | In Progress | Debug callback via `connection.set('debug', fn)` for command logging; no slow query detection; no structured output; no driver log passthrough |
+| EF Core | C# / .NET | Done | Standard EF Core `ILogger`/`DbLoggerCategory.Database.Command`; query compilation events (v10.0+); no built-in slow query threshold — use `DbCommandInterceptor` |
+| Spring Data MongoDB | Java | Done | SLF4J integration via `MongoTemplate` logger; MongoDB driver command logging via `org.mongodb.driver.protocol.command`; no built-in slow query threshold |
+| Hibernate OGM | Java | Backlog | No Hibernate extension-specific logging documented; inherits MongoDB Java driver SLF4J integration; slow query detection not documented |
+| Doctrine MongoDB ODM | PHP | In Progress | APM-based command logging via MongoDB driver; PSR-3 integration via `PSRCommandLogger` in `doctrine/mongodb-odm-bundle`; documentation outdated (issue #2089) |
+| Laravel MongoDB | PHP | Done | `DB::listen()` for query logging; Laravel logging integration; no built-in slow query logger — requires custom middleware |
+| Mongoid | Ruby | Done | Inherits Rails logger; log level configurable via `mongoid.yml`; automatic command monitoring via driver subscription; timing excludes object mapping overhead |
 | Django MongoDB Backend | Python | Done | Standard Django `logging` framework applies; PyMongo `monitoring.CommandListener` available via `connections["default"].database.client` escape hatch; no built-in slow query detection; Django Debug Toolbar partially supported |

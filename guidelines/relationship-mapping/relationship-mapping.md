@@ -21,10 +21,10 @@ Relationship Mapping covers how an ODM represents and resolves associations betw
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
 | Mongoose | JavaScript / TypeScript | Won't Do | `populate()` covers reference-based relationships idiomatically; a prescriptive guideline would conflict with established conventions |
-| EF Core | C# / .NET | Done | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| EF Core | C# / .NET | Done | `OwnsOne()`/`OwnsMany()` for embedding; lazy loading not supported; complex `Include().ThenInclude()` chains have limitations |
+| Spring Data MongoDB | Java | Done | `@DBRef` (lazy/eager) and `@DocumentReference` (preferred since v3.3); bulk loading recommended for same-collection refs to avoid N+1 |
+| Hibernate OGM | Java | In Progress | `@Embeddable`/`@Struct` for embedded documents supported; `@OneToMany`/`@ManyToOne` not supported; planned for GA |
+| Doctrine MongoDB ODM | PHP | Done | `@EmbedOne`/`@EmbedMany` and `@ReferenceOne`/`@ReferenceMany`; reference priming for N+1 mitigation |
+| Laravel MongoDB | PHP | Done | `hasOne`, `hasMany`, `embedsOne`, `embedsMany`; polymorphic relationships (PR #2608); embedded documents returned as raw objects unless `$with` used |
+| Mongoid | Ruby | Done | `embeds_one`/`embeds_many`; `has_one`/`has_many`/`belongs_to`; `includes()` eager loading; `dependent:` cascading |
 | Django MongoDB Backend | Python | Done | `EmbeddedModelField`/`EmbeddedModelArrayField` recommended (no `$lookup`); `ForeignKey`/`OneToOneField`/`ManyToManyField` use slow `$lookup`; relational fields cannot be used inside `EmbeddedModel` classes |

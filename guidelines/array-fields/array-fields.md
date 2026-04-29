@@ -18,11 +18,11 @@ Arrays are a fundamental part of MongoDB's document model. The ODM must expose t
 
 | ODM | Language | Status | Notes |
 |-----|----------|--------|-------|
-| Mongoose | JavaScript / TypeScript | Backlog | — |
-| EF Core | C# / .NET | Backlog | — |
-| Spring Data MongoDB | Java | Backlog | — |
-| Hibernate OGM | Java | Backlog | — |
-| Doctrine MongoDB ODM | PHP | Backlog | — |
-| Laravel MongoDB | PHP | Backlog | — |
-| Mongoid | Ruby | Backlog | — |
+| Mongoose | JavaScript / TypeScript | Done | `[SchemaType]` declaration; `$in`, `$all`, `$elemMatch`, `$size`; `$push`, `$pull`, `$addToSet`, `$pop`, positional operators, `arrayFilters` all supported |
+| EF Core | C# / .NET | Done | `string[]`, `List<T>`, `ICollection<T>`, `Dictionary<K,V>`; basic LINQ array operators; advanced update operators (`$push`, `$arrayFilters`) require driver-level access |
+| Spring Data MongoDB | Java | Done | Native `List<T>` mapping; `$in`, `$all`, `$elemMatch`, `$size` via Criteria; `$push`, `$pull`, `$pop`, `$position`, `$slice`, `arrayFilters` via `Update` |
+| Hibernate OGM | Java | Done | `@ElementCollection`; `List`/`Set`/`Map` via `@Embeddable`/`@Struct`; array query operators via HQL/JPQL; advanced update operators require native queries |
+| Doctrine MongoDB ODM | PHP | Done | `collection`/`hash` field types; multiple storage strategies; `$push`, `$pull`, `$addToSet`, `$pop`; `arrayFilters` support not fully documented in QueryBuilder |
+| Laravel MongoDB | PHP | Done | Array field storage; `$in`, `$all`, `$elemMatch`, `$size`; `$push`, `$pull`, `$addToSet`, `$pop` via MongoDB driver |
+| Mongoid | Ruby | Done | `Array` field type; `$in`, `$all`, `$elemMatch`, `$size` via Criteria; `$push`, `$pull`, `$addToSet`, `$pop` require raw collection access |
 | Django MongoDB Backend | Python | Done | `ArrayField` (scalar) and `EmbeddedModelArrayField` (embedded models); lookups: `contains`, `contained_by`, `overlap`, `len`; index and slice querying on embedded model arrays; relational fields cannot be used as `ArrayField` base type |
